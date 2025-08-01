@@ -1,0 +1,56 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer utilities {
+    @keyframes star-movement-bottom {
+        0% {
+            transform: translate(0%, 0%);
+            opacity: 1;
+        }
+        100% {
+            transform: translate(-100%, 0%);
+            opacity: 0;
+        }
+    }
+
+    @keyframes star-movement-top {
+        0% {
+            transform: translate(0%, 0%);
+            opacity: 1;
+        }
+        100% {
+            transform: translate(100%, 0%);
+            opacity: 0;
+        }
+    }
+
+    .animate-star-movement-bottom {
+        animation: star-movement-bottom linear infinite alternate;
+    }
+
+    .animate-star-movement-top {
+        animation: star-movement-top linear infinite alternate;
+    }
+
+    @keyframes shine {
+        0% {
+            background-position: 100%;
+        }
+        100% {
+            background-position: -100%;
+        }
+    }
+
+    .animate-shine {
+        animation: shine 5s linear infinite;
+        background-size: 200% 100%;
+    }
+}
+
+@layer base {
+    html, body {
+        overscroll-behavior: none;
+        overflow: hidden;
+        /*height: 100%;*/
+    }
+}
