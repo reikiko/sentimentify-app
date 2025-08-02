@@ -15,6 +15,8 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [darkMode, setDarkMode] = useState(true);
 
+  const apiUrl = import.meta.env.VITE_API_URL;
+
   useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add("dark");
@@ -26,7 +28,7 @@ function App() {
   const analyzeSentiment = async () => {
     setLoading(true);
     try {
-      const res = await axios.post("http://127.0.0.1:5000/analyze", { text });
+      const res = await axios.post(`${apiUrl}/analyze`, { text });
       setSentiment(res.data.sentiment);
     } catch (error) {
       console.error("Error analyzing sentiment", error);
