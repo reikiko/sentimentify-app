@@ -13,17 +13,8 @@ function App() {
   const [text, setText] = useState("");
   const [sentiment, setSentiment] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [darkMode, setDarkMode] = useState(true);
 
   const apiUrl = import.meta.env.VITE_API_URL;
-
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [darkMode]);
 
   const analyzeSentiment = async () => {
     setLoading(true);
@@ -39,8 +30,8 @@ function App() {
   };
 
   return (
-    <div className="relative h-screen bg-gradient-to-bl from-black to-gray-900 border  border-gray-800 text-white transition-colors overflow-hidden">
-      <div className="absolute flex items-center justify-center w-screen top-0 py-14 z-10">
+    <div className="relative h-screen bg-gradient-to-bl from-black to-gray-900 border border-gray-800 text-white transition-colors overflow-hidden">
+      <div className="absolute flex items-center justify-center w-screen top-0 px-8 py-14 z-10">
         <GlassSurface
           displace={15}
           distortionScale={-150}
@@ -79,14 +70,14 @@ function App() {
       </div>
 
       <div className="flex items-center justify-center flex-col w-full h-full">
-        <header className="flex flex-col items-center text-center py-12 px-6 z-1">
+        <header className="flex flex-col items-center text-center py-12 px-8 z-1">
           {/*<h2 className="text-4xl font-bold mb-2">How do you feel today?</h2>*/}
           <BlurText
             text="How do you feel today?"
             delay={150}
             animateBy="words"
             direction="top"
-            className="text-4xl font-bold mb-2"
+            className="text-4xl font-bold mb-2 justify-center"
           />
           <motion.p
             initial={{ opacity: 0, y: 100 }}
@@ -95,7 +86,7 @@ function App() {
               duration: 0.5,
               delay: 1,
             }}
-            className="text-gray-600 dark:text-gray-300 max-w-lg"
+            className="text-gray-400 max-w-lg"
           >
             Type a sentence and let AI determine your sentiment with style.
           </motion.p>
@@ -113,13 +104,13 @@ function App() {
         >
           <StarBorder
             as="div"
-            className="w-1/2"
+            className="w-full md:w-1/2"
             color="white"
             speed="5s"
             thickness={2}
           >
             <textarea
-              className="w-full p-4 border border-gray-300 dark:border-gray-600 rounded-2xl text-black dark:text-white dark:bg-gray-700 mb-4 resize-none min-h-[120px]
+              className="w-full p-4 border border-gray-300 dark:border-gray-600 rounded-2xl  mb-4 resize-none min-h-[120px]
              focus:outline-none focus:ring-[0.5] focus:border-blue-500"
               placeholder="Type your sentence here..."
               value={text}
